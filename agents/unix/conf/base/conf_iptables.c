@@ -141,7 +141,7 @@ iptables_obtain_table_list(te_string *table_list)
         int rc;
         te_errno te_rc;
 
-        rc = ta_system_fmt(IPTABLES_TOOL " -t %s -L >/dev/null", tables[i]);
+        rc = ta_system_fmt(IPTABLES_TOOL " -n -t %s -L >/dev/null", tables[i]);
         if (rc < 0 || !WIFEXITED(rc) || WEXITSTATUS(rc) != 0)
             continue;
 
